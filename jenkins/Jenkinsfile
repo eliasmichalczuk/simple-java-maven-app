@@ -23,13 +23,6 @@ pipeline {
         stage('Environment Analysis') {
 
             parallel {
-                stage('Priting All Global Variables') {
-                    steps {
-                        bat """
-                        env
-                        """
-                    }
-                }
                 stage('Execute Shell') {
                     steps {
                         bat 'echo "Hello"'
