@@ -20,6 +20,29 @@ pipeline {
 
     stages {
         
+        stage('Environment Analysis') {
+
+            parallel {
+                stage('Priting All Global Variables') {
+                    steps {
+                        bat """
+                        env
+                        """
+                    }
+                }
+                stage('Execute Shell') {
+                    steps {
+                        bat 'echo "Hello"'
+                    }
+                }
+                stage('Print ENV variable') {
+                    steps {
+                        bat "echo ${APP_ENV}"
+                    }
+                }
+            }
+        }
+        
         stage('Cleanup Workspace') {
             steps {
                 dir("C:/Users/elias/Documents/dev/jenkins") {
