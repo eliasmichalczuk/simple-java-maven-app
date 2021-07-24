@@ -43,10 +43,9 @@ pipeline {
                     }
                 }
                 steps {
-                        bat 'echo "IS PROD"'
-                    }
+                    bat 'echo "IS PROD"'
                 }
-           }
+            }
         
         stage('Environment Analysis') {
 
