@@ -20,6 +20,35 @@ pipeline {
 
     stages {
         
+        stages {
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            string(
+                                defaultValue: '', 
+                                name: 'STRINGPARAMETER', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
+            
+        stage('Deploy to Production') {
+            when {
+                expression { 
+                    return ${STRINGPARAMETER} == 'PROD'
+                }
+            }
+            steps {
+                    bat 'echo "IS PROD"'
+                }
+            }
+       }
+        
         stage('Environment Analysis') {
 
             parallel {
