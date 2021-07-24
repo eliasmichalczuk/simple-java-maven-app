@@ -39,7 +39,7 @@ pipeline {
             stage('Deploy to Production') {
                 when {
                     expression { 
-                        return ${STRINGPARAMETER} == 'PROD'
+                        return params.STRINGPARAMETER == 'PROD'
                     }
                 }
                 steps {
